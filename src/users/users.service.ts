@@ -18,4 +18,7 @@ export class UsersService {
         return user
     }
 
+    async addNew(user:User){
+        return await this.userRepository.save(user)
+    }
 }
