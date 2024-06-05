@@ -12,5 +12,5 @@ export class Sensor {
     value:string
 
     @Column()
-    status:string
+    time:string
 }

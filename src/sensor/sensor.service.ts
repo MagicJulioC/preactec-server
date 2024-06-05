@@ -10,7 +10,14 @@ export class SensorService {
         private sensorRepository: Repository<Sensor>
     ){}
 
-    async updateOne(value:Partial<Sensor>){
-        return await this.sensorRepository.update(1 , value)
+    async updateOne(value:Partial<Sensor>,time:Partial<Sensor>){
+        const updatedFields = { ...time, ...value };
+        // Realiza una única llamada de actualización.
+        return await this.sensorRepository.update(1, updatedFields);
+    }
+
+    async getOne(id:number){
+        const value = await this.sensorRepository.findOneBy({id})
+        return {value:value.value, time:value.time}
     }
 }
