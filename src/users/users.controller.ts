@@ -6,7 +6,7 @@ import { User } from 'src/entities/user.entity';
 export class UsersController {
     constructor(private userService:UsersService){}
     @Post('add')
-    addOne(@Body() user: User){
-        this.userService.addNew(user)
+    async addOne(@Body() user:User){
+         await this.userService.addNew(user)
     }
 }
